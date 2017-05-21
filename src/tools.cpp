@@ -91,14 +91,6 @@ Eigen::VectorXd Tools::h(const VectorXd& x_state) {
 }
 
 float Tools::normalize(const float angle_rad) {
-    float normalized = angle_rad;
-    while (normalized > M_PI) {
-        normalized -= 2*M_PI;
-    }
-    while (normalized < -M_PI) {
-        normalized += 2*M_PI;
-    }
-
-    //return fmod(angle_rad, M_PI);
-    return normalized;
+    double TWO_PI = 2*M_PI;
+    return angle_rad - TWO_PI * floor((angle_rad + M_PI) / TWO_PI );
 }
