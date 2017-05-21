@@ -83,9 +83,18 @@ Eigen::VectorXd Tools::h(const VectorXd& x_state) {
     VectorXd result = VectorXd(3);
     result << rho, phi, rhodot;
 
-    if (phi < -M_PI || phi > M_PI) {
-        std::cout << "Error: phi is not normalized! " << phi << std::endl;
+    return result;
+}
+
+float Tools::normalize(const float angle_rad) {
+    float normalized = angle_rad;
+    while (normalized > M_PI) {
+        normalized -= 2*M_PI;
+    }
+    while (normalized < -M_PI) {
+        normalized += 2*M_PI;
     }
 
-    return result;
+    //return fmod(angle_rad, M_PI);
+    return normalized;
 }

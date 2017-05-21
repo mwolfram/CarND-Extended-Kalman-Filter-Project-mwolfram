@@ -32,6 +32,13 @@ public:
    */
   Eigen::VectorXd h(const Eigen::VectorXd& x_state);
 
+  /**
+   * @brief Tools::normalize
+   * @param angle_rad
+   * @return angle in radians normalized to range between -pi and pi
+   */
+  float normalize(const float angle_rad);
+
 };
 
 #endif /* TOOLS_H_ */
