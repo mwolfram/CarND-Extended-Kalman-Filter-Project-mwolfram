@@ -79,11 +79,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
         float px = rho*cos(phi);
         float py = rho*sin(phi);
 
-        float rho_dot = measurement_pack.raw_measurements_[2];
-        float vx = rho_dot * cos(phi);
-        float vy = rho_dot * sin(phi);
-
-        ekf_.x_ << px, py, vx, vy;
+        ekf_.x_ << px, py, 0, 0;
         previous_timestamp_ = measurement_pack.timestamp_;
 
     }
